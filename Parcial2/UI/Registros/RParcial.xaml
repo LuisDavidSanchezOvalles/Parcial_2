@@ -25,5 +25,56 @@
             <RowDefinition Height="170"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
+
+        <!--Datagrid-->
+
+        <StackPanel Grid.Row="0" Grid.Column="3">
+            <Button x:Name="BuscarButton" Content="Buscar" HorizontalContentAlignment="Right" FontSize="16" Width="75">
+                <Button.Background>
+                    <ImageBrush AlignmentX="Left" Stretch="Uniform" ImageSource="/Resources/buscar.png"/>
+                </Button.Background>
+            </Button>
+        </StackPanel>
+
+        <StackPanel Grid.Row="7" Grid.Column="0">
+            <Button x:Name="AgregarButton" Content="Agregar" HorizontalContentAlignment="Right" FontSize="16" Width="86">
+                <Button.Background>
+                    <ImageBrush AlignmentX="Left" Stretch="Uniform" ImageSource="/Resources/Agregar.png"/>
+                </Button.Background>
+            </Button>
+
+            <Label Height="30"/>
+
+            <Button x:Name="RemoverButton" Content="Remover" HorizontalContentAlignment="Right" FontSize="16" Width="90">
+                <Button.Background>
+                    <ImageBrush AlignmentX="Left" Stretch="Uniform" ImageSource="/Resources/Remover.png"/>
+                </Button.Background>
+            </Button>
+        </StackPanel>
+
+        <StackPanel Grid.Row="8" Grid.Column="0">
+            <Button x:Name="NuevoButton" Content="Nuevo" HorizontalContentAlignment="Right" FontSize="16" Width="90">
+                <Button.Background>
+                    <ImageBrush AlignmentX="Left" Stretch="Uniform" ImageSource="/Resources/nuevo.png"/>
+                </Button.Background>
+            </Button>
+        </StackPanel>
+
+        <StackPanel Grid.Row="8" Grid.Column="1">
+            <Button x:Name="GuardarButton" Content="Guardar" HorizontalContentAlignment="Right" FontSize="16" Width="90">
+                <Button.Background>
+                    <ImageBrush AlignmentX="Left" Stretch="Uniform" ImageSource="/Resources/guardar.jpg"/>
+                </Button.Background>
+            </Button>
+        </StackPanel>
+
+        <StackPanel Grid.Row="8" Grid.Column="3">
+            <Button x:Name="EliminarButton" Content="Eliminar" HorizontalContentAlignment="Right" FontSize="16" Width="90">
+                <Button.Background>
+                    <ImageBrush AlignmentX="Left" Stretch="Uniform" ImageSource="/Resources/eliminar.png"/>
+                </Button.Background>
+            </Button>
+        </StackPanel>
+
     </Grid>
 </Window>
