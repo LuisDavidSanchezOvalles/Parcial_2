@@ -10,7 +10,6 @@
     <Folder Include="Entidades\" />
     <Folder Include="DAL\" />
     <Folder Include="BLL\" />
-    <Folder Include="UI\Registros\" />
     <Folder Include="Validation\" />
   </ItemGroup>
 
