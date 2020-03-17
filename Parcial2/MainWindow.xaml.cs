@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Parcial2.UI.Registros;
 
 namespace Parcial2
 {
@@ -23,6 +24,17 @@ namespace Parcial2
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void Opciones_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            switch (OpcionesComboBox.SelectedIndex)
+            {
+                case 0:
+                    RParcial rPacial = new RParcial();
+                    rPacial.Show();
+                    break;
+            }
         }
     }
 }

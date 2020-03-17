@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Parcial2.UI.Registros"
+        xmlns:src="clr-namespace:Parcial2.Validaciones"
         mc:Ignorable="d"
         Title="RParcial" Height="450" Width="800">
     <Grid>
@@ -21,60 +22,131 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="170"/>
-            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
-        <!--Datagrid-->
+        <StackPanel Grid.Row="0" Grid.Column="0">
+            <Label Content="LlamadaId:" FontSize="16" HorizontalAlignment="Left"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="0" Grid.Column="1">
+            <TextBox x:Name="LlamadaIdTextBox"  FontSize="17" HorizontalAlignment="Stretch">
+                <TextBox.Text>
+                    <Binding Path="llamada.LlamadaId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <src:IdValidation x:Name="LlamadaIdValidation" ValidatesOnTargetUpdated="True"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Grid.Column="0">
+            <Label Content="Descripcion:" FontSize="16" HorizontalAlignment="Left"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Grid.Column="1">
+            <TextBox x:Name="DescripcionTextBox"  FontSize="17" HorizontalAlignment="Stretch">
+                <TextBox.Text>
+                    <Binding Path="llamada.Descripcion" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <src:DescripcionValidation x:Name="DescripcionValidation" ValidatesOnTargetUpdated="True"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Grid.Column="0">
+            <Label Content="Problema:" FontSize="16" HorizontalAlignment="Left"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Grid.Column="1">
+            <TextBox x:Name="ProblemaTextBox"  FontSize="17" HorizontalAlignment="Stretch">
+                <TextBox.Text>
+                    <Binding Path="llamadaDetalle.Problema" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <src:ProblemaValidation x:Name="ProblemaValidation" ValidatesOnTargetUpdated="True"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+        </StackPanel>
+
+        <StackPanel Grid.Row="3" Grid.Column="0">
+            <Label Content="Solucion:" FontSize="16" HorizontalAlignment="Left"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="3" Grid.Column="1">
+            <TextBox x:Name="SolucionTextBox"  FontSize="17" HorizontalAlignment="Stretch">
+                <TextBox.Text>
+                    <Binding Path="llamadaDetalle.Solucion" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <src:SolucionValidation x:Name="SolucionValidation" ValidatesOnTargetUpdated="True"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+        </StackPanel>
+
+        <StackPanel Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2">
+            <DataGrid x:Name="LlamadasDataGrid" Height="250">
+                <DataGrid.ItemsSource>
+                    <Binding Path="llamada.LlamadasDetalle" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <src:DetalleValidation x:Name="LlamadasValidation" ValidatesOnTargetUpdated="True"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </DataGrid.ItemsSource>
+            </DataGrid>
+        </StackPanel>
 
         <StackPanel Grid.Row="0" Grid.Column="3">
-            <Button x:Name="BuscarButton" Content="Buscar" HorizontalContentAlignment="Right" FontSize="16" Width="75">
+            <Button x:Name="BuscarButton" Content="Buscar" HorizontalContentAlignment="Right" FontSize="16" Width="75" Click="BuscarButton_Click">
                 <Button.Background>
                     <ImageBrush AlignmentX="Left" Stretch="Uniform" ImageSource="/Resources/buscar.png"/>
                 </Button.Background>
             </Button>
         </StackPanel>
 
-        <StackPanel Grid.Row="7" Grid.Column="0">
-            <Button x:Name="AgregarButton" Content="Agregar" HorizontalContentAlignment="Right" FontSize="16" Width="86">
+        <StackPanel Grid.Row="4" Grid.Column="0">
+            <Button x:Name="AgregarButton" Content="Agregar" HorizontalContentAlignment="Right" FontSize="16" Width="86" Click="AgregarButton_Click">
                 <Button.Background>
                     <ImageBrush AlignmentX="Left" Stretch="Uniform" ImageSource="/Resources/Agregar.png"/>
                 </Button.Background>
             </Button>
 
-            <Label Height="30"/>
+            <Label Height="100"/>
 
-            <Button x:Name="RemoverButton" Content="Remover" HorizontalContentAlignment="Right" FontSize="16" Width="90">
+            <Button x:Name="RemoverButton" Content="Remover" HorizontalContentAlignment="Right" FontSize="16" Width="90" Click="RemoverButton_Click">
                 <Button.Background>
                     <ImageBrush AlignmentX="Left" Stretch="Uniform" ImageSource="/Resources/Remover.png"/>
                 </Button.Background>
             </Button>
         </StackPanel>
 
-        <StackPanel Grid.Row="8" Grid.Column="0">
-            <Button x:Name="NuevoButton" Content="Nuevo" HorizontalContentAlignment="Right" FontSize="16" Width="90">
+        <StackPanel Grid.Row="5" Grid.Column="0">
+            <Button x:Name="NuevoButton" Content="Nuevo" HorizontalContentAlignment="Right" FontSize="20" Width="90" Click="NuevoButton_Click">
                 <Button.Background>
                     <ImageBrush AlignmentX="Left" Stretch="Uniform" ImageSource="/Resources/nuevo.png"/>
                 </Button.Background>
             </Button>
         </StackPanel>
 
-        <StackPanel Grid.Row="8" Grid.Column="1">
-            <Button x:Name="GuardarButton" Content="Guardar" HorizontalContentAlignment="Right" FontSize="16" Width="90">
+        <StackPanel Grid.Row="5" Grid.Column="1">
+            <Button x:Name="GuardarButton" Content="Guardar" HorizontalContentAlignment="Right" FontSize="20" Width="100" Click="GuardarButton_Click">
                 <Button.Background>
                     <ImageBrush AlignmentX="Left" Stretch="Uniform" ImageSource="/Resources/guardar.jpg"/>
                 </Button.Background>
             </Button>
         </StackPanel>
 
-        <StackPanel Grid.Row="8" Grid.Column="3">
-            <Button x:Name="EliminarButton" Content="Eliminar" HorizontalContentAlignment="Right" FontSize="16" Width="90">
+        <StackPanel Grid.Row="5" Grid.Column="3">
+            <Button x:Name="EliminarButton" Content="Eliminar" HorizontalContentAlignment="Right" FontSize="20" Width="100" Click="EliminarButton_Click">
                 <Button.Background>
                     <ImageBrush AlignmentX="Left" Stretch="Uniform" ImageSource="/Resources/eliminar.png"/>
                 </Button.Background>
             </Button>
         </StackPanel>
-
+        
     </Grid>
 </Window>
